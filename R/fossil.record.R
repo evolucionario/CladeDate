@@ -1,7 +1,7 @@
 #' @title Extract Fossil Record From Tree
 
 #' @description
-#' Thus function collects the fossil record (ages) of a particular clade from the result simmulations in the package [FossilSim]
+#' This function collects the fossil record (ages) of a particular clade from the result of simmulations in the package [FossilSim]
 
 #' @param x the node number that defines the crown-clade
 #' @param phy a phylogenetic tree of class 'phylo'
