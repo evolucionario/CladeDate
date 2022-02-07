@@ -8,5 +8,7 @@ CladeDate is an R package for the generation of empirical calibration informatio
 From the R console:
 
 library(devtools)
+
 install_github("evolucionario/CladeDate")
+
 library(CladeDate)
