@@ -17,7 +17,7 @@ fossil.record(x, phy, fossils)
 a vector of fossil ages
 }
 \description{
-Thus function collects the fossil record (ages) of a particular clade from the result simmulations in the package \link{FossilSim}
+This function collects the fossil record (ages) of a particular clade from the result of simmulations in the package \link{FossilSim}
 }
 \details{
 Coming soon.
