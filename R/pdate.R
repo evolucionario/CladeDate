@@ -4,53 +4,53 @@
 #' Point estimate (\code{pdate}), quantile function (\code{qdate}), and random number generator (\code{rdate}) used for estimating the age of a clade and its associated uncertainty.
 
 #' @param ages vector of fossil ages.
+#' @param CI vector of two number specifying the confidence interval (degault to the 0 and 95th percentil).
+#' @param method a character string specifying the method: \code{"StraussSadler"} (default), \code{"RobsonWhitlock"}, \code{"Beta"}, \code{"NorrisPenGap"}, \code{"NorrisGhostLin"}, or \code{"OLE"}. See Details.
+#' @param KStest if TRUE, a Kolmogorov-Smirnov test evaluates the null hypothesis of uniformity of fossil ages.
+#' @param k the number of fossil ages to use in the “OLE” method, which only used the k oldest ages. 
 #' @param p vector of probabilities.
-#' @param method a character string specifying the method: \code{"StraussSadler"} (default), \code{"Solow"}, \code{"Beta"}, \code{"NorrisPenGap"}, \code{"NorrisGhostLin"}, or \code{"RobertsSolow"}. See Details.
-#' @param KStest if TRUE, a Kolmogorov-Smirnov test is returned testing the null hypothesis that the distribution of fossil ages is uniform.
 #' @param n number of samples requested
-#' @param k the number of fossil ages to use in the “RobertsSolow” method, which only used the k oldest ages. 
-#' ... arguments passed to \code{qdate} (see \code{pdate()})
+#' @param ... arguments passed to \code{qdate}
 
 #' @details
-#' The "StraussSadler" (Strauss & Sadler 1989) method (default) assumes that fossil ages are uniformly distributed, and a warning is returned if a Kolmogorov-Smirnov test rejects the uniformity hypothesis. The “Beta” method is a different parameterization of the Strauss & Sadler's method (Wang et al. 2009) that uses the qbeta function, since the ratio between the observed maximum fossil age and the clade age for the Strauss & Sadler model is distributed according to a Beta distribution with parameters N and 1 (Wang et al. 2009); this should give the same result as "StraussSadler". The "Solow" method (Solow 2003) does not assume uniformity but is based on the two oldest ages only. The “RobertsSolow” method does not assume uniformity and is based on the fact that the joint distribution of the k oldest fossil ages can be modeled with the same Weibull distribution (Roberts & Solow 2003). "NorrisPenGap" and "NorrisGhostLin" implement the method of Norris et al.(2015) based on the two oldest fossils only and the log-logistic distribution. "NorrisPenGap" is used when the precise phylogenetic placement of fossils is not known, whereas "NorrisGhostLin" is used when one fossil from each daughter lineage is used.
+#' The "StraussSadler" (Strauss and Sadler 1989) method (default) assumes that fossil ages are uniformly distributed, and a warning is returned if a Kolmogorov-Smirnov test rejects the uniformity hypothesis. The “Beta” method is a different parameterization of the Strauss and Sadler's method (Wang et al. 2009) that uses the \code{qbeta()} function, since the ratio between the observed maximum fossil age and the clade age is Beta-distributed with parameters N and 1 (Wang et al. 2009). The "RobsonWhitlock" method (Robson and Whitlock 1964, Solow 2003) does not assume uniformity but is based on the two oldest ages only. The “OLE” method (for Optimal Linear Estimator) does not assume uniformity and uses a weighted sum of the oldest k ages (Cooke 1980, Roberts and Solow 2003, Solow 2005). "NorrisPenGap" and "NorrisGhostLin" implement the methods of Norris et al.(2015) based on the two oldest fossils only and the log-logistic distribution. "NorrisPenGap" is used when the precise phylogenetic placement of fossils is not known (with results identical to the "RobsonWhitlock" method), whereas "NorrisGhostLin" is used when one fossil from each daughter lineage is used.
 
-#' @return A numeric value (or vector of numeric values, if multiple p values
-#' are provided) representing the age estimate of the clade origin given the
-#' method a p value provided
+#' @return \code{pdate} returns a point estimate, lower and upper bounds (based on the specified quantiles), and results of the Kolmogorov-Smirnov test (optional), \code{qdate} returns quantiles, and \code{rdate} returns a random sample of \code{n} values.
 
 #' @import stats
 
 #' @examples
-#' Point estimates of clade age
+#' #Point estimates of clade age
 #'   pdate(ages=c(54, 30, 25, 14, 5), p=c(0.1, 0.5, 0.9), KStest=TRUE)
 #'   pdate(ages=c(54, 30, 25, 14, 5), p=c(0.1, 0.5, 0.9), method="Beta")
-#'   pdate(ages=c(54, 30, 25, 14, 5), p=c(0.1, 0.5, 0.9), method="Solow")
+#'   pdate(ages=c(54, 30, 25, 14, 5), p=c(0.1, 0.5, 0.9), method="RobsonWhitlock")
 
-#' Quantiles
+#' #Quantiles
 #'   qdate(ages=c(54, 30, 25, 14, 5), p=c(0.025, 0.5, 0.975))
 
-#' Random numbers
-#'   qdate(ages=c(54, 30, 25, 14, 5), p=c(0.025, 0.5, 0.975))
+#' #Random numbers
+#'   rdate(ages=c(54, 30, 25, 14, 5), n=10)
 
 #' @author Santiago Claramunt, \email{sclaramunt@@rom.on.ca}
 
 #' @references
 
-#' Norris, R. W., C. L. Strope, D. M. McCandlish, A. Stoltzfus (manuscript). Bayesian priors for tree calibration: Evaluating two new approaches based on fossil intervals. bioRxiv, doi: https://doi.org/10.1101/014340
+#' Cooke, P. (1980). Optimal linear estimation of bounds of random variables. *Biometrika*, **67**, 257--258.
 
-#' Roberts, D. L., & Solow, A. R. (2003). When did the dodo become extinct?. Nature, 426(6964), 245-245.
+#' Norris, R. W., Strope, C. L., McCandlish, D. M. and Stoltzfus, A. (2015). Bayesian priors for tree calibration: Evaluating two new approaches based on fossil intervals. *bioRxiv*, 014340 doi:<https://doi.org/10.1101/014340>
 
-#' Solow, A. R. 2003. Estimation of stratigraphic ranges when fossil finds are not randomly distributed. Paleobiology 29(2):181-185.
+#' Roberts, D. L. and Solow, A. R. (2003). When did the dodo become extinct?. *Nature*, **426**(6964), 245--245.
 
-#' Solow, A. R. 2005. Inferring extinction from a sighting record.Mathematical Biosciences 195:47–55.
+#' Robson, D. S., and Whitlock, J. H. (1964). Estimation of a truncation point. Biometrika **51(1)**, 33--39.
 
-#' Strauss D, & P. M. Sadler 1989. Classical confidence intervals and Bayesian probability estimates for ends of local taxon ranges. Mathematica Geology 21:411-427.
+#' Solow, A. R. (2003) Estimation of stratigraphic ranges when fossil finds are not randomly distributed. *Paleobiology* **29**(2):181--185.
 
-#' Wang, S. C. 2010. Principles of statistical inference: likelihood and the Bayesian paradigm. Pp. 1-18 in J. Alroy & G. Hunt (eds.) Quantitative methods in paleobiology. The Paleontological Society Papers 16.
+#' Solow, A. R. (2005) Inferring extinction from a sighting record. Mathematical *Biosciences* **195**:47-–55.
 
-#' Wang, S. C., D J. Chudzicki & P. J. Everson 2009. Optimal estimators of the position of a mass extinction when recovery potential is uniform. Paleobiology 35(3):447–459.
+#' Strauss D. and Sadler, P. M.  (1989) Classical confidence intervals and Bayesian probability estimates for ends of local taxon ranges. *Mathematica Geology* **21**,411--427.
 
-#' Wang, S. C., & P. J. Everson. 2007. Confidence intervals for pulsed mass extinction events. Paleobiology 33(2):324–336.
+#' Wang, S. C., Chudzicki, D. J. and Everson, P. J. (2009) Optimal estimators of the position of a mass extinction when recovery potential is uniform. *Paleobiology* **35**(3), 447–-459.
+
 
 #' @export
 
@@ -102,7 +102,7 @@ pdate <- function(ages, method="StraussSadler", CI=c(0,0.95), KStest=FALSE, k=mi
 
 		}
 
-	if(method=="Solow") {
+	if(method=="RobsonWhitlock") {
 						
 		AGE <- ages[1] + (ages[1]-ages[2])
 		
@@ -110,7 +110,7 @@ pdate <- function(ages, method="StraussSadler", CI=c(0,0.95), KStest=FALSE, k=mi
 
 		}
 
-	if(method=="RobertsSolow") { 
+	if(method=="OLE") { 
 	
 	# Select the k oldest observations (5 by default)
 	
@@ -148,7 +148,7 @@ pdate <- function(ages, method="StraussSadler", CI=c(0,0.95), KStest=FALSE, k=mi
 	AGE <- sum(a*ages)
 	
 	if(!is.null(CI)) {
-		# Calculate Su (Robert & Solow 2003) or C.alpha (Solow 2005 eq. 18)
+		# Calculate Su (Robert and Solow 2003) or C.alpha (Solow 2005 eq. 18)
 		Su <- (-log(1-CI)/k)^-v
 		ci <- max(ages) + ( max(ages) - min(ages)) / ( Su - 1 )
 		}
@@ -174,6 +174,8 @@ pdate <- function(ages, method="StraussSadler", CI=c(0,0.95), KStest=FALSE, k=mi
 }
 
 
+
+#' @rdname pdate
 #' @export
 
 qdate <- function(ages, p=0.5, method="StraussSadler", k=min(length(ages),10)) {
@@ -203,7 +205,7 @@ qdate <- function(ages, p=0.5, method="StraussSadler", k=min(length(ages),10)) {
 		
 		 }
 		
-	if(method=="Solow") {
+	if(method=="RobsonWhitlock") {
 				
 		AGE <- ages[1] + (ages[1]-ages[2])*p/(1-p) 
 
@@ -225,7 +227,7 @@ qdate <- function(ages, p=0.5, method="StraussSadler", k=min(length(ages),10)) {
 		
 		AGE <- UltG + ages[1]}
 	
-	if(method=="RobertsSolow") {
+	if(method=="OLE") {
 		
 	# Select the k oldest observations (5 by default)
 	
@@ -239,7 +241,7 @@ qdate <- function(ages, p=0.5, method="StraussSadler", k=min(length(ages),10)) {
 
 		v <- 1/(k-1) * sum(log(t))
 
-	# Calculate Su (Robert & Solow 2003, = c(alpha) Solow 2005 eq. 18)
+	# Calculate Su (Robert and Solow 2003, = c(alpha) Solow 2005 eq. 18)
 		Su <- (-log(1-p)/k)^-v
 
 	# But Su must be >= 1 (otherwise the estimate may be younger than older fossil) so:
@@ -248,7 +250,7 @@ qdate <- function(ages, p=0.5, method="StraussSadler", k=min(length(ages),10)) {
 	# Calculate the quantile (Solow 2005 eq. 17) (Something seems wrong)	
 	#AGE <- ( ages[1] - Su*ages[k]) / ( 1 - Su)
 	
-	# Calculate the quantile (Roberts & Solow 2003)
+	# Calculate the quantile (Roberts and Solow 2003)
 	
 		AGE <- ages[1] + ( ages[1] - ages[k]) / ( Su - 1 )
 
@@ -258,7 +260,7 @@ qdate <- function(ages, p=0.5, method="StraussSadler", k=min(length(ages),10)) {
 }
 
 
-
+#' @rdname pdate
 #' @export
 
 rdate <- function(ages, n, ...) {

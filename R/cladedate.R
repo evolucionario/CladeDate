@@ -5,7 +5,7 @@
 
 #' @param ages vector of fossil ages (if ages are known exactly) or or a matrix with fossils in rows and two columns: the first with the minimum age bounds (upper stratigraphic bounds) and the second with the maximum age bounds (lower stratigraphic bounds).
 #' @param p vector of probabilities indicating the quantiles to be reported.
-#' @param method a character string specifying the method: \code{"StraussSadler"} (default), \code{"Solow"}, \code{"Beta"}, \code{"NorrisPenGap"}, \code{"NorrisGhostLin"}, or \code{"RobertsSolow"}. See [pdate] for details.
+#' @param method a character string specifying the method: \code{"StraussSadler"} (default), \code{"RobsonWhitlock"}, \code{"Beta"}, \code{"NorrisPenGap"}, \code{"NorrisGhostLin"}, or \code{"OLE"}. See [pdate] for details.
 #' @param KStest if TRUE, a Kolmogorov-Smirnov test is returned testing the null hypothesis that the distribution of fossil ages is uniform.
 #' @param n number of Monte Carlo replicates for generating the empirical distribution.
 #' @param PDFfitting a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. “skewStudent” fits a skew-Student distribution using function \code{sstdFit} in the \code{fGarch} library. NULL prevents fitting.
@@ -34,13 +34,13 @@
 #'   clade.date(Fages)
 #'
 #' ## Alternative options
-#'   clade.date(Fages, method="RobertsSolow", plot=TRUE, PDFfitting="lognormal")
+#'   clade.date(Fages, method="OLE", plot=TRUE, PDFfitting="lognormal")
 #'
 #' @author Santiago Claramunt, \email{sclaramunt@@rom.on.ca}
 
 #' @references
 
-#' Claramunt, S. & J. L. Cracraft. 2015. A new time tree reveals Earth history’s imprint on the evolution of modern birds. *Science Advances* 1:e1501005 <https://doi.org/10.1126/sciadv.1501005>
+#' Claramunt, S. & J. L. Cracraft. (2015) A new time tree reveals Earth history’s imprint on the evolution of modern birds. *Science Advances* **1**:e1501005 <https://doi.org/10.1126/sciadv.1501005>
 #'
 #'
 #' @seealso [pdate] for point estimates when fossil ages are known exactly, quantile functions, and the random generator function.
@@ -80,7 +80,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 		Mages <- runif(nrow(ages), min=ages[,1], max=ages[,2])
 		} else Mages <- ages	
 		
-		# Estimate the bounds of the distribution under the null using Strauss & Solow method
+		# Estimate the bounds of the distribution under the null using StraussSadler method
 		range <- max(Mages) - min(Mages)
 		
 		N <- length(Mages)
