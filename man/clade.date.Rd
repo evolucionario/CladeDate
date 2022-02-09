@@ -24,7 +24,7 @@ clade.date(
 
 \item{n}{number of Monte Carlo replicates for generating the empirical distribution.}
 
-\item{method}{a character string specifying the method: \code{"StraussSadler"} (default), \code{"Solow"}, \code{"Beta"}, \code{"NorrisPenGap"}, \code{"NorrisGhostLin"}, or \code{"RobertsSolow"}. See \link{pdate} for details.}
+\item{method}{a character string specifying the method: \code{"StraussSadler"} (default), \code{"RobsonWhitlock"}, \code{"Beta"}, \code{"NorrisPenGap"}, \code{"NorrisGhostLin"}, or \code{"OLE"}. See \link{pdate} for details.}
 
 \item{KStest}{if TRUE, a Kolmogorov-Smirnov test is returned testing the null hypothesis that the distribution of fossil ages is uniform.}
 
@@ -61,11 +61,11 @@ Fages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
   clade.date(Fages)
 
 ## Alternative options
-  clade.date(Fages, method="RobertsSolow", plot=TRUE, PDFfitting="lognormal")
+  clade.date(Fages, method="OLE", plot=TRUE, PDFfitting="lognormal")
 
 }
 \references{
-Claramunt, S. & J. L. Cracraft. 2015. A new time tree reveals Earth history’s imprint on the evolution of modern birds. \emph{Science Advances} 1:e1501005 \url{https://doi.org/10.1126/sciadv.1501005}
+Claramunt, S. & J. L. Cracraft. (2015) A new time tree reveals Earth history’s imprint on the evolution of modern birds. \emph{Science Advances} \strong{1}:e1501005 \url{https://doi.org/10.1126/sciadv.1501005}
 }
 \seealso{
 \link{pdate} for point estimates when fossil ages are known exactly, quantile functions, and the random generator function.
