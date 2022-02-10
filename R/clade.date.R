@@ -8,22 +8,26 @@
 #' @param method a character string specifying the method: \code{"StraussSadler"} (default), \code{"RobsonWhitlock"}, \code{"Beta"}, \code{"NorrisPenGap"}, \code{"NorrisGhostLin"}, or \code{"OLE"}. See [pdate] for details.
 #' @param KStest if TRUE, a Kolmogorov-Smirnov test is returned testing the null hypothesis that the distribution of fossil ages is uniform.
 #' @param n number of Monte Carlo replicates for generating the empirical distribution.
-#' @param PDFfitting a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. “skewStudent” fits a skew-Student distribution using function \code{sstdFit} in the \code{fGarch} library. NULL prevents fitting.
+#' @param PDFfitting a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. "skewStudent" fits a skew-Student distribution using function \code{sstdFit} in the \code{fGarch} library. NULL prevents fitting.
 #' @param plot If TRUE, plots fossil ages, a histogram of the Monte Carlo replicates, the median, and the 95% quantile (and the fitted probability density function if available).
 #' @param repvalues	If TRUE, all n Monte Carlo replicates are returned.
 #' @param breaks Specifies the algorithm used to determine the number of histogram cells in the plot (see [hist] for alternatives, if needed).
 #' @param ... additional arguments passed to \code{qdate} (see [pdate] for details)
 
 #' @details
-#' This function generates an empirical distribution representing the probability density of the age of a clade of organisms. The distribution is generated using a Monte Carlo algorithm based on alternative methods of estimating the age of a clade from a set of fossils ages (see [pdate]). The algorithm incorporates fossil age uncertainty (if present) by sampling ages from the time interval were the fossil was found.
+#' This function generates an empirical distribution representing the probability density of the age of a clade of organisms. The distribution is generated using a Monte Carlo algorithm based and methods for estimating the upper bound of a sample of fossils ages (see [pdate]). The algorithm incorporates fossil age uncertainty (if present) by sampling ages from the time interval were the fossil was found. A Kolmogorov-Smirnov test can be requested to test the null hypothesis that the distribution of fossil ages is uniform (using function [ks.test]); the bounds under the null are estimated using the StraussSadler method and if fossil ages are interval, a random sample of ages from those intervals is used in the test.
 
 #' @return a list with the following elements:
 #' \itemize{
+#' \item{ages: fossil ages}
+#' \item{method: the estimation method used}
+#' \item{rep.values: all Monte Carlo replicates (if requested)}
 #' \item{Quantiles}
-#' \item{KStest}
-#' \item{PDFfit}
+#' \item{KStest: result of the Kolmogorov-Smirnov test of uniformity (if requested), as returned by [ks.test]}
+#' \item{PDFfit.model: name of probability density model fit (if requested)}
+#' \item{PDFfit: list including the results of the probability density fit, including estimated parameters (if requested)}
 #' }
-#' @import stats grDevices graphics
+#' @import stats grDevices graphics fGarch
 
 #' @examples
 #'
@@ -40,14 +44,14 @@
 
 #' @references
 
-#' Claramunt, S. & J. L. Cracraft. (2015) A new time tree reveals Earth history’s imprint on the evolution of modern birds. *Science Advances* **1**:e1501005 <https://doi.org/10.1126/sciadv.1501005>
+#' Claramunt, S. & J. L. Cracraft. (2015) A new time tree reveals Earth history�s imprint on the evolution of modern birds. *Science Advances* **1**:e1501005 <https://doi.org/10.1126/sciadv.1501005>
 #'
 #'
 #' @seealso [pdate] for point estimates when fossil ages are known exactly, quantile functions, and the random generator function.
 
 #' @export
 
-clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler", KStest=FALSE, PDFfitting="best", ...) {
+clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler", KStest=FALSE, PDFfitting="best", repvalues=TRUE, plot=FALSE, ...) {
 	
 	ages <- as.matrix(ages)
 		
@@ -62,11 +66,13 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 	RES <-list()
 
 	RES$ages <- ages
+
+	RES$method <- method
 	
 	# Obtain replciates
 	rA <- rdate(ages=ages, n=n, method=method, ...)
 	
-	RES$rep.values <- rA
+	if(repvalues) { RES$rep.values <- rA }
 
 	# Compute quantiles
 	Qs <- quantile(rA, prob=p)	
@@ -98,7 +104,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 			}
 
 
-# Fit a probability distribution to the MC sample
+	# Fit a probability distribution to the MC sample, if requested
 				
 	if(!is.null(PDFfitting)) {
 
@@ -116,34 +122,47 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 			
 			best.model <- which.min(AICs)
 			
-			RES$PDFfit <- switch(best.model, PDFfit.lognormal, PDFfit.gamma, PDFfit.exponential)
-
 			# Assign the best model name to PDFfitting so it is plotted and reported
+			
 			PDFfitting <- model.names[best.model]
+			
+			RES$PDFfit.model <- PDFfitting
+			
+			RES$PDFfit <- switch(best.model, PDFfit.lognormal, PDFfit.gamma, PDFfit.exponential)
 
 			} else if(PDFfitting=="skewStudent") {		
 		
-		
-		PDFfit <- fGarch::sstdFit(rA)
+			RES$PDFfit.model <- PDFfitting
+
+			PDFfit <- fGarch::sstdFit(rA)
 				
-		RES$PDFfit <- PDFfit
+			RES$PDFfit <- PDFfit
 			} else if(PDFfitting=="skewnormal") {		
 		
-		PDFfit <- fGarch::snormFit(rA)
-				
-		RES$PDFfit <- PDFfit
-			} else {		
+			PDFfit <- fGarch::snormFit(rA)
 		
-		PDFfit <- MASS::fitdistr(x=rA-max(ages[,1]), densfun=PDFfitting)
+			RES$PDFfit.model <- PDFfitting
+
+			RES$PDFfit <- PDFfit
+
+			} else {		
+			
+			PDFfit <- MASS::fitdistr(x=rA-max(ages[,1]), densfun=PDFfitting)
+
+			RES$PDFfit.model <- PDFfitting
 				
-		RES$PDFfit <- PDFfit
+			RES$PDFfit <- PDFfit
 			}
-			
-		RES$PDFfit.model <- PDFfitting
-			
+						
 		}
 		
 	class(RES) <- "clade.date"
+
+	if(plot) { plot(RES)}
 	
 	return(RES) 
 }	
+
+
+
+
