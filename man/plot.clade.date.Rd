@@ -4,7 +4,7 @@
 \alias{plot.clade.date}
 \title{Plot Empirical Calibration Densities}
 \usage{
-\method{plot}{clade.date}(object, breaks = "FD", ...)
+plot.clade.date(object, breaks = "FD", ...)
 }
 \arguments{
 \item{object}{an object of class \code{"clade.date"}.}
