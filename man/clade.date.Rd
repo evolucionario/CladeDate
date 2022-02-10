@@ -11,9 +11,6 @@ clade.date(
   method = "StraussSadler",
   KStest = FALSE,
   PDFfitting = "best",
-  plot = FALSE,
-  repvalues = FALSE,
-  breaks = "FD",
   ...
 )
 }
@@ -30,13 +27,13 @@ clade.date(
 
 \item{PDFfitting}{a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. “skewStudent” fits a skew-Student distribution using function \code{sstdFit} in the \code{fGarch} library. NULL prevents fitting.}
 
+\item{...}{additional arguments passed to \code{qdate} (see \link{pdate} for details)}
+
 \item{plot}{If TRUE, plots fossil ages, a histogram of the Monte Carlo replicates, the median, and the 95\% quantile (and the fitted probability density function if available).}
 
 \item{repvalues}{If TRUE, all n Monte Carlo replicates are returned.}
 
 \item{breaks}{Specifies the algorithm used to determine the number of histogram cells in the plot (see \link{hist} for alternatives, if needed).}
-
-\item{...}{additional arguments passed to \code{qdate} (see \link{pdate} for details)}
 }
 \value{
 a list with the following elements:
