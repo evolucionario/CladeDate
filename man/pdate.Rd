@@ -56,12 +56,19 @@ The "StraussSadler" (Strauss and Sadler 1989) method (default) assumes that foss
 }
 \references{
 Cooke, P. (1980). Optimal linear estimation of bounds of random variables. \emph{Biometrika}, \strong{67}, 257--258.
+
 Norris, R. W., Strope, C. L., McCandlish, D. M. and Stoltzfus, A. (2015). Bayesian priors for tree calibration: Evaluating two new approaches based on fossil intervals. \emph{bioRxiv}, 014340 doi:\url{https://doi.org/10.1101/014340}
+
 Roberts, D. L. and Solow, A. R. (2003). When did the dodo become extinct?. \emph{Nature}, \strong{426}(6964), 245--245.
+
 Robson, D. S., and Whitlock, J. H. (1964). Estimation of a truncation point. Biometrika \strong{51(1)}, 33--39.
+
 Solow, A. R. (2003) Estimation of stratigraphic ranges when fossil finds are not randomly distributed. \emph{Paleobiology} \strong{29}(2):181--185.
+
 Solow, A. R. (2005) Inferring extinction from a sighting record. Mathematical \emph{Biosciences} \strong{195}:47-–55.
+
 Strauss D. and Sadler, P. M.  (1989) Classical confidence intervals and Bayesian probability estimates for ends of local taxon ranges. \emph{Mathematica Geology} \strong{21},411--427.
+
 Wang, S. C., Chudzicki, D. J. and Everson, P. J. (2009) Optimal estimators of the position of a mass extinction when recovery potential is uniform. \emph{Paleobiology} \strong{35}(3), 447–-459.
 }
 \author{
