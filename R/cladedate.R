@@ -47,7 +47,7 @@
 
 #' @export
 
-clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler", KStest=FALSE, PDFfitting="best", plot=FALSE, repvalues=FALSE, breaks="FD", ...) {
+clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler", KStest=FALSE, PDFfitting="best", ...) {
 	
 	ages <- as.matrix(ages)
 		
@@ -61,11 +61,12 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 	# Create list for results
 	RES <-list()
 
+	RES$ages <- ages
+	
 	# Obtain replciates
 	rA <- rdate(ages=ages, n=n, method=method, ...)
 	
-	# Store replicates if requested
-	if(repvalues==TRUE) RES$rep.values <- rA
+	RES$rep.values <- rA
 
 	# Compute quantiles
 	Qs <- quantile(rA, prob=p)	
@@ -141,59 +142,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 		RES$PDFfit.model <- PDFfitting
 			
 		}
-	
-	if(plot) {
 		
-		# Set x limits
-		XX <- c(max(0, min(ages)-min(ages)/8), quantile(rA, prob=0.98))
-		
-		par(lend=1, las=1)
-
-		HIST <- hist(rA, breaks=breaks, freq=FALSE, xlim=XX, col=rgb(.25,.7,.9,0.5), border="#4DCCFF", xlab="Time", main="", yaxs="i")
-
-
-		if(ncol(ages) == 2) {
-			# Plot fossil age intervals
-			rect(xleft=ages[,1], ybottom=0, xright=ages[,2], ytop=max(HIST$density)/40, col=gray(0.5,0.75), border=NA)
-			}
-		
-		# Plot fitted distribution if requested
-		if(!is.null(PDFfitting)) {
-						
-			if(PDFfitting=="lognormal") {
-				curve(dlnorm(x-max(ages[,1]), meanlog=RES$PDFfit$estimate[1], sdlog=RES$PDFfit$estimate[2]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
-				legend("right", legend="log-normal density", text.col="#CC6600", bty="n")
-			}
-
-			if(PDFfitting=="gamma") {
-				curve(dgamma(x-max(ages[,1]), shape=RES$PDFfit$estimate[1], rate=RES$PDFfit$estimate[2]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
-				legend("right", legend="gamma density", text.col="#CC6600", bty="n")
-			}
-
-			if(PDFfitting=="exponential") {
-				curve(dexp(x-max(ages[,1]), rate=RES$PDFfit$estimate[1]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
-				legend("right", legend="exponential density", text.col="#CC6600", bty="n")
-			}
-			if(PDFfitting=="skewnormal") {
-				curve(dsnorm(x, mean=RES$PDFfit$par["mean"], sd = RES$PDFfit$par["sd"], xi = RES$PDFfit$par["xi"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
-				legend("right", legend="skew-normal density", text.col="#CC6600", bty="n")
-			}
-			if(PDFfitting=="skewStudent") {
-				curve(dsstd(x, mean=RES$PDFfit$estimate["mean"], sd = RES$PDFfit$estimate["sd"], nu=RES$PDFfit$estimate["nu"], xi = RES$PDFfit$estimate["xi"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
-				legend("right", legend="skew-Student density", text.col="#CC6600", bty="n")
-			}
-		}
-				
-		mean.ages <- rowMeans(ages)
-
-		points(mean.ages, rep(0, length(mean.ages)), pch=17, xpd=TRUE, cex=1.2)
-
-		points(quantile(rA, prob=c(0.5,0.95)), c(0,0), pch=c(17,18), col="#0078B3", xpd=TRUE, cex=1.2)
-		
-		legend("topleft", legend=c("fossil ages","MC distribution", "median","95% quantile"), pch=c(17,22, 17,18), col=c("black","#4DCCFF","#0078B3","#0078B3"), pt.bg=c("black",rgb(.25,.7,.9,0.5)), bty="n") # inset=c(0, -0.1), xpd=TRUE
-	
-	}
-	
 	class(RES) <- "clade.date"
 	
 	return(RES) 
