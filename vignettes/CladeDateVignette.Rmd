@@ -1,7 +1,0 @@
-\documentclass{article}
-\usepackage{pdfpages}
-%\VignetteIndexEntry{Claramunt2022CladeDateVignette}
-
-\begin{document}
-\includepdf[pages=-, fitpaper=true]{CladeDateVIGNETTE.pdf}
-\end{document}
