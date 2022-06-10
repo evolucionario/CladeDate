@@ -1,3 +1,2 @@
 Consider switching to the 'sn' package for fitting skew-normal and skew-Student distributions.
-Add plotting function: separate plotting from clade.date
 Add a node.density function to plit densities on a phylo tree.
