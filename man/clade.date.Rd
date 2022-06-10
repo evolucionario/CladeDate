@@ -68,7 +68,7 @@ Fages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
 
 }
 \references{
-Claramunt, S. & J. L. Cracraft. (2015) A new time tree reveals Earth history�s imprint on the evolution of modern birds. \emph{Science Advances} \strong{1}:e1501005 \url{https://doi.org/10.1126/sciadv.1501005}
+Claramunt, S. & J. L. Cracraft. (2015) A new time tree reveals Earth history's imprint on the evolution of modern birds. \emph{Science Advances} \strong{1}:e1501005 \url{https://doi.org/10.1126/sciadv.1501005}
 }
 \seealso{
 \link{pdate} for point estimates when fossil ages are known exactly, quantile functions, and the random generator function.
