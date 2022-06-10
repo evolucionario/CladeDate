@@ -27,7 +27,7 @@ clade.date(
 
 \item{KStest}{if TRUE, a Kolmogorov-Smirnov test is returned testing the null hypothesis that the distribution of fossil ages is uniform.}
 
-\item{PDFfitting}{a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. "skewStudent" fits a skew-Student distribution using function \code{sstdFit} in the \code{fGarch} library. NULL prevents fitting.}
+\item{PDFfitting}{a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. "skewnormal" and "skewStudent" fit skew distributions using the \code{fGarch} library. NULL prevents fitting.}
 
 \item{repvalues}{If TRUE, all n Monte Carlo replicates are returned.}
 
@@ -58,17 +58,17 @@ This function generates an empirical distribution representing the probability d
 \examples{
 
 ## Matrix of fossil ages including maximum and minimum bounds for each
-Fages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
+Fossil.ages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
 
 ## Basic execution
-  clade.date(Fages)
+  clade.date(Fossil.ages)
 
 ## Alternative options
-  clade.date(Fages, method="OLE", plot=TRUE, PDFfitting="lognormal")
+  clade.date(Fossil.ages, method="OLE", plot=TRUE, PDFfitting="lognormal")
 
 }
 \references{
-Claramunt, S. & J. L. Cracraft. (2015) A new time tree reveals Earth history's imprint on the evolution of modern birds. \emph{Science Advances} \strong{1}:e1501005 \url{https://doi.org/10.1126/sciadv.1501005}
+Claramunt, S. & J. L. Cracraft. (2015) A new time tree reveals Earth history s imprint on the evolution of modern birds. \emph{Science Advances} \strong{1}:e1501005 \url{https://doi.org/10.1126/sciadv.1501005}
 }
 \seealso{
 \link{pdate} for point estimates when fossil ages are known exactly, quantile functions, and the random generator function.
