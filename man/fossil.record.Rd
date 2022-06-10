@@ -20,5 +20,5 @@ a vector of fossil ages
 Thus function collects the fossil record (ages) of a particular clade from the result simmulations in the package \link{FossilSim}
 }
 \details{
-Coming soon.
+This function extract the fossil record of a clade from a \link{FossiSim} object. The clade is indicxated by the node that represent the most recent common ancestor of the clade.
 }
