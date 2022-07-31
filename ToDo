@@ -1,2 +1,28 @@
 Consider switching to the 'sn' package for fitting skew-normal and skew-Student distributions.
-Add a node.density function to plit densities on a phylo tree.
+
+### plot.clade.date ###
+In plot.clade.date, handle the presence or absence of replicate values. If repvalues are not present in the clade.date object, plot the probability curve anyway (if a fit present), and return a message saying that if the empirical distribution is wanted, repvalues has to be switched to TRUE in clade.date
+Similarly with fit.distr.
+
+
+### Add ancillary functions like: ###
+
+Plot empirical densities or probability densities on timetrees. Potentially accept ML trees and do a quick time scaling with chronos.
+
+Check compatibility of calibrations
+
+# Potentially add fossil graft or taxon graft to add fossil or outgroups to a tree?
+
+# Add CalibMC ?
+
+
+### DONE ###
+
+### clade.date documentation file: ###
+
+Add skew normal to list of arguments
+
+Change the apostrophe symbol in the citation of Claramunt & Cracraft
+
+Change "Fages" to "Fossil.ages"
+
