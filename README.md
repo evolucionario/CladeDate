@@ -18,3 +18,7 @@ library(devtools)
 install_github("evolucionario/CladeDate")
 library(CladeDate)
 ````
+
+### References
+
+Claramunt, S. 2022. CladeDate: calibration information generator for divergence time estimation. Methods in Ecology and Evolution  (https://doi.org/10.1111/2041-210X.13977).
