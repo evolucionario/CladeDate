@@ -135,7 +135,9 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 			RES$PDFfit.model <- PDFfitting
 
 			PDFfit <- fGarch::sstdFit(rA)
-				
+			
+			warning("Note that this parameterization of the skew-Student distribution is different from the one used by MCMCtree.")
+			
 			RES$PDFfit <- PDFfit
 			} else if(PDFfitting=="skewnormal") {		
 		
