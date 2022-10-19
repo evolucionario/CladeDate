@@ -1,4 +1,4 @@
-Consider switching to the 'sn' package for fitting skew-normal and skew-Student distributions so the later can be used in MCMCtree.
+Switching to the 'sn' package for fitting skew-normal and skew-Student distributions so the later can be used in MCMCtree.
 
 ### plot.clade.date ###
 In plot.clade.date, handle the presence or absence of replicate values. If repvalues are not present in the clade.date object, plot the probability curve anyway (if a fit present), and return a message saying that if the empirical distribution is wanted, repvalues has to be switched to TRUE in clade.date
