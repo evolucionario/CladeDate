@@ -5,6 +5,13 @@ In plot.clade.date, handle the presence or absence of replicate values. If repva
 Similarly with fit.distr.
 
 
+### Bugs ###
+
+When using the plotting option in clade.date:
+"Error in hist.default(rA, breaks = breaks, freq = FALSE, xlim = XX, col = rgb(0.25,  : 
+  'x' must be numeric"
+
+
 ### Add ancillary functions like: ###
 
 Plot empirical densities or probability densities on timetrees. Potentially accept ML trees and do a quick time scaling with chronos.
