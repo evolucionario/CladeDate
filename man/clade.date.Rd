@@ -68,7 +68,7 @@ Fossil.ages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
 
 }
 \references{
-Claramunt, S. (2022) CladeDate: calibration information generator for divergence time estimation. \emph{Methods in Ecology and Evolution} \strong{13}:2331-2338 \url{https://doi.org/10.1111/2041-210X.13977}
+Claramunt, S. (2022) CladeDate: calibration information generator for divergence time estimation. \emph{Methods in Ecology and Evolution} \strong{13}, 2331-2338 \url{https://doi.org/10.1111/2041-210X.13977}
 }
 \seealso{
 \link{pdate} for point estimates when fossil ages are known exactly, quantile functions, and the random generator function.
