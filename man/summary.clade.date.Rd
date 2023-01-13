@@ -44,5 +44,8 @@ Fages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
 \link{clade.date}.
 }
 \author{
-Santiago Claramunt, \email{sclaramunt@rom.on.ca}
+Santiago Claramunt, \email{s.claramunt@utoronto.ca}
+}
+\references{
+Claramunt, S. (2022) CladeDate: calibration information generator for divergence time estimation. \emph{Methods in Ecology and Evolution} \strong{13}, 2331-2338 \url{https://doi.org/10.1111/2041-210X.13977}
 }
