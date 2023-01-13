@@ -25,11 +25,11 @@
 #' ## Plot
 #' plot(X)
 #'
-#' @author Santiago Claramunt, \email{sclaramunt@@rom.on.ca}
+#' @author Santiago Claramunt, \email{s.claramunt@@utoronto.ca}
 
 #' @references
 
-#' Claramunt, S. *In review* CladeDate: : empirical calibration density generator for divergence time estimation
+#' Claramunt, S. 2022. CladeDate: calibration information generator for divergence time estimation. Methods in Ecology and Evolution **13**(11):2331-2338. <https://doi.org/10.1111/2041-210X.13977>
 #'
 #'
 #' @seealso [clade.date] for generating empirical calibration densities.
