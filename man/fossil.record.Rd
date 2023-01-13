@@ -22,3 +22,9 @@ Thus function collects the fossil record (ages) of a particular clade from the r
 \details{
 This function extract the fossil record of a clade from a \link{FossiSim} object. The clade is indicxated by the node that represent the most recent common ancestor of the clade.
 }
+\author{
+Santiago Claramunt, \email{s.claramunt@utoronto.ca}
+}
+\references{
+Claramunt, S. (2022) CladeDate: calibration information generator for divergence time estimation. \emph{Methods in Ecology and Evolution} \strong{13}:2331-2338 \url{https://doi.org/10.1111/2041-210X.13977}
+}
