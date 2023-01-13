@@ -19,6 +19,11 @@
 
 #' @import stats
 
+#' @references
+
+#' Claramunt, S. 2022. CladeDate: calibration information generator for divergence time estimation. Methods in Ecology and Evolution **13**(11):2331-2338. <https://doi.org/10.1111/2041-210X.13977>
+#'
+
 #' @examples
 #'
 #' ## Matrix of fossil ages including maximum and minimum bounds for each
