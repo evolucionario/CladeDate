@@ -25,7 +25,9 @@ Check compatibility of calibrations
 
 ### DONE ###
 
-### clade.date documentation file: ###
+Fixed the "quartz" bug. Deleted the call to quartz so the ploting function works in PC as well.
+
+# In clade.date documentation file: #
 
 Add skew normal to list of arguments
 
