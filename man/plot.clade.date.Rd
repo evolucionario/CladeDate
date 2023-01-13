@@ -35,11 +35,10 @@ plot(X)
 
 }
 \references{
-Claramunt, S. \emph{In review} CladeDate: : empirical calibration density generator for divergence time estimation
-}
+Claramunt, S. (2022) CladeDate: calibration information generator for divergence time estimation. \emph{Methods in Ecology and Evolution} \strong{13}, 2331-2338 \url{https://doi.org/10.1111/2041-210X.13977}}
 \seealso{
 \link{clade.date} for generating empirical calibration densities.
 }
 \author{
-Santiago Claramunt, \email{sclaramunt@rom.on.ca}
+Santiago Claramunt, \email{s.claramunt@utoronto.ca}
 }
