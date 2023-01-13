@@ -55,6 +55,7 @@ The "StraussSadler" (Strauss and Sadler 1989) method (default) assumes that foss
   rdate(ages=c(54, 30, 25, 14, 5), n=10)
 }
 \references{
+Claramunt, S. (2022) CladeDate: calibration information generator for divergence time estimation. \emph{Methods in Ecology and Evolution} \strong{13}, 2331-2338 \url{https://doi.org/10.1111/2041-210X.13977}
 Cooke, P. (1980). Optimal linear estimation of bounds of random variables. \emph{Biometrika}, \strong{67}, 257--258.
 Norris, R. W., Strope, C. L., McCandlish, D. M. and Stoltzfus, A. (2015). Bayesian priors for tree calibration: Evaluating two new approaches based on fossil intervals. \emph{bioRxiv}, 014340 doi:\url{https://doi.org/10.1101/014340}
 Roberts, D. L. and Solow, A. R. (2003). When did the dodo become extinct?. \emph{Nature}, \strong{426}(6964), 245--245.
@@ -65,5 +66,5 @@ Strauss D. and Sadler, P. M.  (1989) Classical confidence intervals and Bayesian
 Wang, S. C., Chudzicki, D. J. and Everson, P. J. (2009) Optimal estimators of the position of a mass extinction when recovery potential is uniform. \emph{Paleobiology} \strong{35}(3), 447–-459.
 }
 \author{
-Santiago Claramunt, \email{sclaramunt@rom.on.ca}
+Santiago Claramunt, \email{s.claramunt@utoronto.ca}
 }
