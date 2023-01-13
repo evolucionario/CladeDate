@@ -31,9 +31,11 @@
 #' #Random numbers
 #'   rdate(ages=c(54, 30, 25, 14, 5), n=10)
 
-#' @author Santiago Claramunt, \email{sclaramunt@@rom.on.ca}
+#' @author Santiago Claramunt, \email{s.claramunt@@utoronto.ca}
 
 #' @references
+
+#' Claramunt, S. (2022). CladeDate: calibration information generator for divergence time estimation. Methods in Ecology and Evolution **13**(11):2331-2338. <https://doi.org/10.1111/2041-210X.13977>
 
 #' Cooke, P. (1980). Optimal linear estimation of bounds of random variables. *Biometrika*, **67**, 257--258.
 
