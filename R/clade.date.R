@@ -40,7 +40,7 @@
 #' ## Alternative options
 #'   clade.date(Fages, method="OLE", plot=TRUE, PDFfitting="lognormal")
 #'
-#' @author Santiago Claramunt, \email{sclaramunt@@rom.on.ca}
+#' @author Santiago Claramunt, \email{s.claramunt@@utoronto.ca}
 
 #' @references
 
