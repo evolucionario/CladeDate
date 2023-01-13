@@ -47,7 +47,6 @@ plot.clade.date <- function(object, breaks="FD", ...) {
 		# Set x limits
 		XX <- c(max(0, min(ages)-min(ages)/8), quantile(rA, prob=0.98))
 		
-		quartz("CladeDate", 8, 3.5)
 		par(lend=1, las=1, mar=c(5,5,1,1), ...)
 
 		HIST <- hist(rA, breaks=breaks, freq=FALSE, xlim=XX, col=rgb(.25,.7,.9,0.5), border="#4DCCFF", xlab="Time", main="", yaxs="i")
