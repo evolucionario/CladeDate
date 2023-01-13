@@ -44,8 +44,7 @@
 
 #' @references
 
-#' Claramunt, S. & J. L. Cracraft. (2015) A new time tree reveals Earth history�s imprint on the evolution of modern birds. *Science Advances* **1**:e1501005 <https://doi.org/10.1126/sciadv.1501005>
-#'
+#' Claramunt, S. 2022. CladeDate: calibration information generator for divergence time estimation. Methods in Ecology and Evolution **13**(11):2331-2338. <https://doi.org/10.1111/2041-210X.13977>
 #'
 #' @seealso [pdate] for point estimates when fossil ages are known exactly, quantile functions, and the random generator function.
 
