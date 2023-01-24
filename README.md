@@ -8,8 +8,8 @@ E-mail: s.claramunt@utoronto.ca
 
 CladeDate is an R package for the generation of empirical calibration information from the fossil record. CladeDate uses simple mathematical models to estimate the age of a clade and its uncertainty based on fossil ages. Using a Monte Carlo approach, CladeDate generates empirical densities representing the uncertainty associated with the age of the clade and fits standard probability density functions that can be used in time-tree inference software such as BEAST2, MrBayes, and MCMCtree.
 
-### ATTENTION users of MCMCtree:
-Note that the parameterization of the skew-student distribution provided by clade.date is different from the one used in MCMCtree, thus you can't use those parameters directly when setting a prior. I will fix this in the next version. 
+### Users of MCMCtree:
+CladeDate fits skew-normal and skew-student distribution with the parameterization used in MCMCtree.
 
 ## Instalation
 
