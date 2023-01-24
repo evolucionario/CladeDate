@@ -12,7 +12,7 @@
 
 #' @return Creates a plot from a \code{clade.date} object.
 
-#' @import stats grDevices graphics
+#' @import stats grDevices graphics sn
 
 #' @examples
 #'
