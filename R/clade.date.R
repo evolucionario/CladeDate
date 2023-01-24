@@ -8,7 +8,7 @@
 #' @param method a character string specifying the method: \code{"StraussSadler"} (default), \code{"RobsonWhitlock"}, \code{"Beta"}, \code{"NorrisPenGap"}, \code{"NorrisGhostLin"}, or \code{"OLE"}. See [pdate] for details.
 #' @param KStest if TRUE, a Kolmogorov-Smirnov test is returned testing the null hypothesis that the distribution of fossil ages is uniform.
 #' @param n number of Monte Carlo replicates for generating the empirical distribution.
-#' @param PDFfitting a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. "skewnormal" and "skewStudent" fit skew-normal and skew-Student distributions using function \code{selm} in the \code{sn} library. NULL prevents fitting.
+#' @param PDFfitting a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. "skewnormal" and "skewstudent" fit skew-normal and skew-Student distributions using function \code{selm} in the \code{sn} library. NULL prevents fitting.
 #' @param plot If TRUE, plots fossil ages, a histogram of the Monte Carlo replicates, the median, and the 95% quantile (and the fitted probability density function if available).
 #' @param repvalues	If TRUE, all n Monte Carlo replicates are returned.
 #' @param breaks Specifies the algorithm used to determine the number of histogram cells in the plot (see [hist] for alternatives, if needed).
@@ -129,7 +129,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 			
 			RES$PDFfit <- switch(best.model, PDFfit.lognormal, PDFfit.gamma, PDFfit.exponential)
 
-			} else if(PDFfitting=="skewStudent") {		
+			} else if(PDFfitting=="skewstudent") {		
 		
 			RES$PDFfit.model <- PDFfitting
 			
