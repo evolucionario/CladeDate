@@ -131,7 +131,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 
 			} else if(PDFfitting=="skewnormal") {		
 		
-			RES$PDFfit.model <- PDFfitting
+			RES$PDFfit.model <- "skewnormal"
 
 			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
 
@@ -149,7 +149,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 			
 			} else if(PDFfitting=="skewstudent") {		
 		
-			RES$PDFfit.model <- PDFfitting
+			RES$PDFfit.model <- "skewstudent"
 			
 			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
 
