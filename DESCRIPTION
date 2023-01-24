@@ -1,6 +1,6 @@
 Package: CladeDate
 Title: Empirical Calibration Density Generator for Divergence Time Estimation
-Version: 1.0
+Version: 1.2
 Authors@R: 
     person("Santiago", "Claramunt", , "s.claramunt@utoronto.ca", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8926-5974"))
