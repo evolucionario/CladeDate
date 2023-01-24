@@ -139,7 +139,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 
 			#RES$PDFfit.AIC <- sn::AIC(PDFfit)
 
-			param <- extractSECdistr(PDFfit)
+			param <- sn::extractSECdistr(PDFfit)
 			
 			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"])
 
@@ -157,7 +157,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 
 			RES$PDFfit.AIC <- sn::AIC(PDFfit)
 
-			param <- extractSECdistr(PDFfit)
+			param <- sn::extractSECdistr(PDFfit)
 			
 			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"],param@dp["nu"])
 			
