@@ -75,11 +75,11 @@ plot.clade.date <- function(object, breaks="FD", ...) {
 				legend("right", legend="exponential density", text.col="#CC6600", bty="n")
 			}
 			if(object$PDFfit.model=="skewnormal") {
-				curve(dsn(x, xi=object$PDFfit.param["xi"], omega=PDFfit.param["omega"], alpha=PDFfit.param["alpha"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+				curve(sn::dsn(x, xi=object$PDFfit.param["xi"], omega=PDFfit.param["omega"], alpha=PDFfit.param["alpha"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				legend("right", legend="skew-normal density", text.col="#CC6600", bty="n")
 			}
 			if(object$PDFfit.model=="skewstudent") {
-				curve(dst(x, xi=object$PDFfit.param["xi"], omega=PDFfit.param["omega"], alpha=PDFfit.param["alpha"], nu=PDFfit.param["nu"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+				curve(sn::dst(x, xi=object$PDFfit.param["xi"], omega=PDFfit.param["omega"], alpha=PDFfit.param["alpha"], nu=PDFfit.param["nu"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				legend("right", legend="skew-Student density", text.col="#CC6600", bty="n")
 			}
 		}
