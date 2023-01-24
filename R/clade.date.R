@@ -131,6 +131,8 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 
 			} else if(PDFfitting=="skewnormal") {		
 		
+			RES$PDFfit.model <- PDFfitting
+
 			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
 
 			PDFfit <- sn::selm(rA ~ 1, family="SN")
@@ -153,9 +155,9 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 
 			PDFfit <- sn::selm(rA ~ 1, family="ST")
 			
-			RES$PDFfit.logLik <- sn::logLik(PDFfit)
+			#RES$PDFfit.logLik <- sn::logLik(PDFfit)
 
-			RES$PDFfit.AIC <- sn::AIC(PDFfit)
+			#RES$PDFfit.AIC <- sn::AIC(PDFfit)
 
 			param <- sn::extractSECdistr(PDFfit)
 			
