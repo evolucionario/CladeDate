@@ -27,7 +27,8 @@
 #' \item{PDFfit.model: name of probability density model fit (if requested)}
 #' \item{PDFfit: list including the results of the probability density fit, including estimated parameters (if requested)}
 #' }
-#' @import stats grDevices graphics sn
+#' @import stats grDevices graphics
+#' @importFrom sn selm extractSECdistr
 
 #' @examples
 #'
