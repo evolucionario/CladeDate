@@ -58,7 +58,7 @@ summary.clade.date <- function(x, param="standard", digits=4) {
 		
 		cat("\nParameters of the", x$PDFfit.model,"function:\n")
 		
-		if (x$PDFfit.model == "skewnormal" | x$PDFfit.model == "skewstudent") {
+		if (x$PDFfit.model == "skewnormal" || x$PDFfit.model == "skewstudent") {
 			
 			print(c(offset=x$Quantiles[[1]], x$$PDFfit.param), digits=digits)
 
