@@ -45,7 +45,7 @@ plot.clade.date <- function(object, breaks="FD", ...) {
 		rA <- object$rep.values
 		
 		# Set x limits
-		XX <- c(max(0, min(ages)-min(ages)/8), quantile(rA, prob=0.98))
+		XX <- c(max(0, min(ages)-min(ages)/8), quantile(rA, prob=0.99))
 		
 		par(lend=1, las=1, mar=c(5,5,1,1), ...)
 
