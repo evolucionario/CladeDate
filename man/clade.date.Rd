@@ -27,7 +27,7 @@ clade.date(
 
 \item{KStest}{if TRUE, a Kolmogorov-Smirnov test is returned testing the null hypothesis that the distribution of fossil ages is uniform.}
 
-\item{PDFfitting}{a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. "skewnormal" and "skewStudent" fit skew distributions using the \code{sn} library. NULL prevents fitting.}
+\item{PDFfitting}{a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. \code{"skewnormal"} and \code{"skewstudent"} fit skew distributions using the \code{sn} library. NULL prevents fitting.}
 
 \item{repvalues}{If TRUE, all n Monte Carlo replicates are returned.}
 
@@ -71,7 +71,7 @@ Fossil.ages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
 Claramunt, S. (2022) CladeDate: calibration information generator for divergence time estimation. \emph{Methods in Ecology and Evolution} \strong{13}, 2331-2338 \url{https://doi.org/10.1111/2041-210X.13977}
 }
 \seealso{
-\link{pdate} for point estimates when fossil ages are known exactly, quantile functions, and the random generator function.
+\link{pdate} for point estimates, quantile function, and random generator when fossil ages are known exactly.
 }
 \author{
 Santiago Claramunt, \email{s.claramunt@utoronto.ca}
