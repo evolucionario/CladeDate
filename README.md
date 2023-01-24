@@ -1,5 +1,7 @@
 ## CladeDate: Empirical calibration density generator for divergence time estimation
 
+## Version: 1.2
+
 Santiago Claramunt
 
 Department of Ecology and Evolutionary Biology, University of Toronto, Ontario, Canada.
