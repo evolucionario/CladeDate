@@ -132,20 +132,37 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 			} else if(PDFfitting=="skewStudent") {		
 		
 			RES$PDFfit.model <- PDFfitting
+			
+			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
 
-			PDFfit <- fGarch::sstdFit(rA)
+			PDFfit <- sn::selm(rA ~ 1, family="ST")
 			
-			warning("Note that this parameterization of the skew-Student distribution is different from the one used by MCMCtree.")
+			RES$PDFfit.logLik <- logLik(PDFfit)
+
+			RES$PDFfit.AIC <- AIC(PDFfit)
+
+			RES$PDFfit <- extractSECdistr(PDFfit)
 			
-			RES$PDFfit <- PDFfit
+			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"],param@dp["nu"])
+			
+			# xi, omega, alpha, and nu correspond to location, scale, shape, and df used by MCMCtree
+			
 			} else if(PDFfitting=="skewnormal") {		
 		
-			PDFfit <- fGarch::snormFit(rA)
-		
-			RES$PDFfit.model <- PDFfitting
+			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
 
-			RES$PDFfit <- PDFfit
+			PDFfit <- sn::selm(rA ~ 1, family="SN")
+			
+			RES$PDFfit.logLik <- logLik(PDFfit)
 
+			RES$PDFfit.AIC <- AIC(PDFfit)
+
+			RES$PDFfit <- extractSECdistr(PDFfit)
+			
+			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"])
+
+			# xi, omega, alpha, and nu correspond to location, scale and shape used by MCMCtree
+			
 			} else {		
 			
 			PDFfit <- MASS::fitdistr(x=rA-max(ages[,1]), densfun=PDFfitting)
