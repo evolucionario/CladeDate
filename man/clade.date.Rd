@@ -27,7 +27,7 @@ clade.date(
 
 \item{KStest}{if TRUE, a Kolmogorov-Smirnov test is returned testing the null hypothesis that the distribution of fossil ages is uniform.}
 
-\item{PDFfitting}{a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. "skewnormal" and "skewStudent" fit skew distributions using the \code{fGarch} library. NULL prevents fitting.}
+\item{PDFfitting}{a character string specifying a standard probability density function ( \code{"lognormnal"}, \code{"gamma"}, \code{"exponential"}) to be fit to the sample. "best" returns the best-fit density among those. "skewnormal" and "skewStudent" fit skew distributions using the \code{sn} library. NULL prevents fitting.}
 
 \item{repvalues}{If TRUE, all n Monte Carlo replicates are returned.}
 
