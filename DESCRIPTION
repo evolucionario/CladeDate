@@ -2,7 +2,7 @@ Package: CladeDate
 Title: Empirical Calibration Density Generator for Divergence Time Estimation
 Version: 1.0
 Authors@R: 
-    person("Santiago", "Claramunt", , "sclaramunt@rom.on.ca", role = c("aut", "cre"),
+    person("Santiago", "Claramunt", , "s.claramunt@utoronto.ca", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8926-5974"))
 Description: CladeDate estimates the geological age of clades of organisms using information from the fossil record. CladeDate generates point estimates, confidence intervals and probability distributions of the age of clades. It uses a Monte Carlo algorithm based and methods for estimating the upper bound of a sample of fossil ages. CladeDate can also fit standard probability density functions to the empirical distributions, which can be used as empirical calibration densities in time-tree inference software such as BEAST2, MrBayes, and MCMCtree.
 License: `use_gpl3_license()`
