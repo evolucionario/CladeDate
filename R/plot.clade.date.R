@@ -74,22 +74,24 @@ plot.clade.date <- function(object, breaks="FD", ...) {
 				curve(dexp(x-max(ages[,1]), rate=object$PDFfit$estimate[1]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				legend("right", legend="exponential density", text.col="#CC6600", bty="n")
 			}
-			if(object$PDFfit.model=="skewnormal") {
+		}
+		
+		if(object$PDFfit.model=="skewnormal") {
 				curve(sn::dsn(x, xi=object$PDFfit.param["xi"], omega=object$PDFfit.param["omega"], alpha=object$PDFfit.param["alpha"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				legend("right", legend="skew-normal density", text.col="#CC6600", bty="n")
-			}
-			if(object$PDFfit.model=="skewstudent") {
-				curve(sn::dst(x, xi=object$PDFfit.param["xi"], omega=object$PDFfit.param["omega"], alpha=object$PDFfit.param["alpha"], nu=object$PDFfit.param["nu"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
-				legend("right", legend="skew-Student density", text.col="#CC6600", bty="n")
-			}
+		}
+		
+		if(object$PDFfit.model=="skewstudent") {
+			curve(sn::dst(x, xi=object$PDFfit.param["xi"], omega=object$PDFfit.param["omega"], alpha=object$PDFfit.param["alpha"], nu=object$PDFfit.param["nu"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+			legend("right", legend="skew-Student density", text.col="#CC6600", bty="n")
 		}
 				
-		mean.ages <- rowMeans(ages)
+	mean.ages <- rowMeans(ages)
 
-		points(mean.ages, rep(0, length(mean.ages)), pch=17, xpd=TRUE, cex=1.2)
+	points(mean.ages, rep(0, length(mean.ages)), pch=17, xpd=TRUE, cex=1.2)
 
-		points(quantile(rA, prob=c(0.5,0.95)), c(0,0), pch=c(17,18), col="#0078B3", xpd=TRUE, cex=1.2)
+	points(quantile(rA, prob=c(0.5,0.95)), c(0,0), pch=c(17,18), col="#0078B3", xpd=TRUE, cex=1.2)
 		
-		legend("topleft", legend=c("fossil ages","MC distribution", "median","95% quantile"), pch=c(17,22, 17,18), col=c("black","#4DCCFF","#0078B3","#0078B3"), pt.bg=c("black",rgb(.25,.7,.9,0.5)), bty="n") # inset=c(0, -0.1), xpd=TRUE
+	legend("topleft", legend=c("fossil ages","MC distribution", "median","95% quantile"), pch=c(17,22, 17,18), col=c("black","#4DCCFF","#0078B3","#0078B3"), pt.bg=c("black",rgb(.25,.7,.9,0.5)), bty="n") # inset=c(0, -0.1), xpd=TRUE
 	
 }	
