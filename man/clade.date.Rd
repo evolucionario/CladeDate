@@ -50,10 +50,10 @@ a list with the following elements:
 }
 }
 \description{
-This function uses the fossil record of a clade to generate an empirical probability density function that can be used as a calibration density or calibration prior in Bayesian divergence time estimation. Relevant quantiles such as the median or the 95\% quantile can also obtained to be used in analyses based on fixed ages or bounds (e.g. penalized likelihood).
+This function uses the fossil record of a clade to generate an empirical probability density function that can be used as a calibration density or calibration prior in Bayesian divergence time estimation. Relevant quantiles such as the median or the 95\% quantile can also obtained to be used in analyses based on fixed ages or bounds.
 }
 \details{
-This function generates an empirical distribution representing the probability density of the age of a clade of organisms. The distribution is generated using a Monte Carlo algorithm based and methods for estimating the upper bound of a sample of fossils ages (see \link{pdate}). The algorithm incorporates fossil age uncertainty (if present) by sampling ages from the time interval were the fossil was found. A Kolmogorov-Smirnov test can be requested to test the null hypothesis that the distribution of fossil ages is uniform (using function \link{ks.test}); the bounds under the null are estimated using the StraussSadler method and if fossil ages are interval, a random sample of ages from those intervals is used in the test.
+This function generates an empirical distribution representing the uncertainty around the estimated age of a clade of organisms based on a collection of fossil ages. The distribution is generated using a Monte Carlo algorithm and methods for estimating the upper bounds of truncated distributions (see \link{pdate}). The algorithm incorporates fossil age uncertainty (if present) by sampling ages from the time interval were the fossil was found. A Kolmogorov-Smirnov test can be requested to test the null hypothesis that the distribution of fossil ages is uniform (using function \link{ks.test}); the bounds under the null are estimated using the StraussSadler method and, if fossil ages are represend by intervals, a random sample of ages from the intervals is used for the test.
 }
 \examples{
 
