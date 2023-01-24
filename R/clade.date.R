@@ -159,7 +159,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 
 			param <- sn::extractSECdistr(PDFfit)
 			
-			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"],param@dp["nu"])
+			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"], param@dp["nu"])
 			
 			# xi, omega, alpha, and nu correspond to location, scale, shape, and df used by MCMCtree
 			
