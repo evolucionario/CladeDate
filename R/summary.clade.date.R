@@ -60,7 +60,7 @@ summary.clade.date <- function(x, param="standard", digits=4) {
 		
 		if (x$PDFfit.model == "skewnormal" || x$PDFfit.model == "skewstudent") {
 			
-			print(x$$PDFfit.param, digits=digits)
+			print(x$PDFfit.param, digits=digits)
 
 		} else {
 		
