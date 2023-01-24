@@ -129,24 +129,6 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 			
 			RES$PDFfit <- switch(best.model, PDFfit.lognormal, PDFfit.gamma, PDFfit.exponential)
 
-			} else if(PDFfitting=="skewstudent") {		
-		
-			RES$PDFfit.model <- PDFfitting
-			
-			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
-
-			PDFfit <- sn::selm(rA ~ 1, family="ST")
-			
-			#RES$PDFfit.logLik <- sn::logLik(PDFfit)
-
-			#RES$PDFfit.AIC <- sn::AIC(PDFfit)
-
-			RES$PDFfit <- extractSECdistr(PDFfit)
-			
-			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"],param@dp["nu"])
-			
-			# xi, omega, alpha, and nu correspond to location, scale, shape, and df used by MCMCtree
-			
 			} else if(PDFfitting=="skewnormal") {		
 		
 			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
@@ -157,11 +139,29 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 
 			#RES$PDFfit.AIC <- sn::AIC(PDFfit)
 
-			RES$PDFfit <- extractSECdistr(PDFfit)
+			param <- extractSECdistr(PDFfit)
 			
 			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"])
 
 			# xi, omega, alpha, and nu correspond to location, scale and shape used by MCMCtree
+			
+			} else if(PDFfitting=="skewstudent") {		
+		
+			RES$PDFfit.model <- PDFfitting
+			
+			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
+
+			PDFfit <- sn::selm(rA ~ 1, family="ST")
+			
+			RES$PDFfit.logLik <- sn::logLik(PDFfit)
+
+			RES$PDFfit.AIC <- sn::AIC(PDFfit)
+
+			param <- extractSECdistr(PDFfit)
+			
+			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"],param@dp["nu"])
+			
+			# xi, omega, alpha, and nu correspond to location, scale, shape, and df used by MCMCtree
 			
 			} else {		
 			
