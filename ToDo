@@ -6,10 +6,13 @@ Similarly with fit.distr.
 
 ### Bugs ###
 
-When using the plotting option in clade.date:
+# When using the plotting option in clade.date:
 "Error in hist.default(rA, breaks = breaks, freq = FALSE, xlim = XX, col = rgb(0.25,  : 
   'x' must be numeric"
+# When fitting a skewstudent distribution in sn: "Error in integrate(fun.d, -Inf, alpha * zt[i], nu1 = nu + 1) : 
+  the integral is probably divergent" Maybe switch to maxumum penalized likelihood estimation in seml, although that seems to work better for small sample size. Or play with sample size (pseudoreplicates): fewer samples seem to work.
 
+ 
 
 ### Add ancillary functions like: ###
 
