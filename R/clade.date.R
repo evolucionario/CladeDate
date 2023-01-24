@@ -137,9 +137,9 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 
 			PDFfit <- sn::selm(rA ~ 1, family="ST")
 			
-			RES$PDFfit.logLik <- logLik(PDFfit)
+			RES$PDFfit.logLik <- sn::logLik(PDFfit)
 
-			RES$PDFfit.AIC <- AIC(PDFfit)
+			RES$PDFfit.AIC <- sn::AIC(PDFfit)
 
 			RES$PDFfit <- extractSECdistr(PDFfit)
 			
@@ -153,9 +153,9 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler",
 
 			PDFfit <- sn::selm(rA ~ 1, family="SN")
 			
-			RES$PDFfit.logLik <- logLik(PDFfit)
+			RES$PDFfit.logLik <- sn::logLik(PDFfit)
 
-			RES$PDFfit.AIC <- AIC(PDFfit)
+			RES$PDFfit.AIC <- sn::AIC(PDFfit)
 
 			RES$PDFfit <- extractSECdistr(PDFfit)
 			
