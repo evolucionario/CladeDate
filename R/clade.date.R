@@ -51,7 +51,7 @@
 
 #' @export
 
-clade.date <- function(ages, p=c(0, 0.5, 0.95), n=10000, method="StraussSadler", KStest=FALSE, PDFfitting="best", repvalues=TRUE, plot=FALSE, ...) {
+clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", KStest=FALSE, PDFfitting="best", repvalues=TRUE, plot=FALSE, ...) {
 	
 	ages <- as.matrix(ages)
 		
