@@ -22,5 +22,4 @@ library(CladeDate)
 
 ## References
 
-Claramunt, S. (2022) CladeDate: calibration information generator for divergence time estimation. \emph{Methods in Ecology and Evolution} \strong{13}, 2331-2338 \url{https://doi.org/10.1111/2041-210X.13977}
-
+Claramunt, S. (2022) CladeDate: calibration information generator for divergence time estimation. Methods in Ecology and Evolution 13, 2331-2338. https://doi.org/10.1111/2041-210X.13977
