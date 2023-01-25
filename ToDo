@@ -18,7 +18,7 @@ Similarly with fit.distr.
 
 Plot empirical densities or probability densities on timetrees. Potentially accept ML trees and do a quick time scaling with chronos.
 
-Check compatibility of calibrations
+Check compatibility of calibrations. Look for function plot.prior in my files.
 
 # Potentially add fossil graft or taxon graft to add fossil or outgroups to a tree?
 
