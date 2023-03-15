@@ -14,7 +14,9 @@ Similarly with fit.distr.
 
  
 
-### Add ancillary functions like: ###
+### Add ancillary functions: ###
+
+Extract clade ages for specific nodes from a collection of time-trees (e.g. a posterior distribution of trees from a Bayesian analysis), and fit distributions for developing secondary calibrations.
 
 Plot empirical densities or probability densities on timetrees. Potentially accept ML trees and do a quick time scaling with chronos.
 
