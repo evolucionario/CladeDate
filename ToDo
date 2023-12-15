@@ -11,7 +11,7 @@ Similarly with fit.distr.
   'x' must be numeric"
 # When fitting a skewstudent distribution in sn: "Error in integrate(fun.d, -Inf, alpha * zt[i], nu1 = nu + 1) : 
   the integral is probably divergent" Maybe switch to maxumum penalized likelihood estimation in seml, although that seems to work better for small sample size. Or play with sample size (pseudoreplicates): fewer samples seem to work.
-
+# Fix bug preventing the plot of "skewnormal" and "skewstudent" funcitons.
  
 
 ### Add ancillary functions: ###
