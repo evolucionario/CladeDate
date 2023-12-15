@@ -76,17 +76,17 @@ plot.clade.date <- function(object, breaks="FD", ...) {
 				curve(dexp(x-max(ages[,1]), rate=object$PDFfit$estimate[1]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				legend("right", legend="exponential density", text.col="#CC6600", bty="n")
 			}
-		}
-		
-		if(object$PDFfit.model=="skewnormal") {
+			if(object$PDFfit.model=="skewnormal") {
 				curve(sn::dsn(x, xi=object$PDFfit.param["xi"], omega=object$PDFfit.param["omega"], alpha=object$PDFfit.param["alpha"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				legend("right", legend="skew-normal density", text.col="#CC6600", bty="n")
-		}
+			}
 		
-		if(object$PDFfit.model=="skewstudent") {
+			if(object$PDFfit.model=="skewstudent") {
 			curve(sn::dst(x, xi=object$PDFfit.param["xi"], omega=object$PDFfit.param["omega"], alpha=object$PDFfit.param["alpha"], nu=object$PDFfit.param["nu"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 			legend("right", legend="skew-Student density", text.col="#CC6600", bty="n")
+			}
 		}
+		
 				
 	mean.ages <- rowMeans(ages)
 
