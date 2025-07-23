@@ -18,12 +18,12 @@ install.packages("devtools")
 install.packages("phangorn")
 install.packages("sn")
 ```
-Then istall  `CladeDate` from GitHub:
-````
+Then istall CladeDate from GitHub:
+```
 library(devtools)
 install_github("evolucionario/CladeDate")
 library(CladeDate)
-````
+```
 
 ## References
 
