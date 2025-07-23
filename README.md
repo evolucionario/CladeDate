@@ -4,9 +4,9 @@
 
 Santiago Claramunt
 
-Department of Ecology and Evolutionary Biology, University of Toronto, Ontario, Canada.
+Department of Biological Sciences, University of New Orleans, New Orleans, Louisiana, USA.
 
-E-mail: s.claramunt@utoronto.ca
+E-mail: sclaramu@uno.edu
 
 CladeDate is an R package for the generation of empirical calibration information from the fossil record. CladeDate uses fossil ages together with estimators of upper bounds of truncated distributions to estimate the age of clades and their uncertainty. Using a Monte Carlo approach, CladeDate generates empirical densities representing the uncertainty associated with the age of the clade and fits standard probability density functions that can be used in time-tree estimation software such as BEAST2, MrBayes, and MCMCtree.
 
