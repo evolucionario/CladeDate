@@ -96,4 +96,6 @@ summary.clade.date <- function(x, param="standard", digits=4) {
 		print(c(offset=offset, mean=mean, st.dev.=st.dev), digits=digits)
 		
 	}
+        cat("\nlogLik:", x$PDFfit.logLik,"\n")
+        cat("AIC:", x$PDFfit.AIC,"\n")
 }
