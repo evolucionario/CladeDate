@@ -74,5 +74,5 @@ Strauss D. and Sadler, P. M.  (1989) Classical confidence intervals and Bayesian
 Wang, S. C., Chudzicki, D. J. and Everson, P. J. (2009) Optimal estimators of the position of a mass extinction when recovery potential is uniform. \emph{Paleobiology} \strong{35}(3), 447–-459.
 }
 \author{
-Santiago Claramunt, \email{s.claramunt@utoronto.ca}
+Santiago Claramunt, \email{sclaramu@uno.edu}
 }
