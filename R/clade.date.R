@@ -148,15 +148,23 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 			
 			RES$PDFfit.logLik <- PDFfit@logL
             
-			RES$PDFfit.AIC <- AIC(PDFfit)       
-
+			RES$PDFfit.AIC <- -2 * as.numeric(PDFfit@logL) + 2 * 3
+			
 			} else if(PDFfitting=="skewstudent") {		
 		
 			RES$PDFfit.model <- "skewstudent"
 			
-			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
+					PDFfit <- tryCatch(
+            sn::selm(rA ~ 1, family = "ST"),
+            error = function(e) {
+  				message(
+			      "Skew-normal fitting failed in sn::selm(): ", conditionMessage(e), "\n",
+			      "This can be a numerical issue with large samples.\n",
+			      "Try reducing 'n' (Monte Carlo replicates)"
+   					)
+  			  	return(NULL) } )        
 
-			PDFfit <- sn::selm(rA ~ 1, family="ST")
+			if (!is.null(PDFfit)) {
 
 			param <- sn::extractSECdistr(PDFfit)
 			
@@ -166,7 +174,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 
 			RES$PDFfit.logLik <- PDFfit@logL 
             
-			RES$PDFfit.AIC <- AIC(PDFfit)       
+			RES$PDFfit.AIC <- -2 * as.numeric(PDFfit@logL) + 2 * 4 }
 
 			} else {		
 			
@@ -186,7 +194,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 		
 	class(RES) <- "clade.date"
 
-	if(plot) { plot(RES)}
+	if(plot) { plot.clade.date(RES)}
 	
 	return(RES) 
 }	
