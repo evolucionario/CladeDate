@@ -44,6 +44,8 @@ plot.clade.date <- function(object, breaks="FD", ...) {
 		
 		ages <- object$ages # make clade.date return ages
 		
+		offset <- max(ages[,1])
+
 		rA <- object$rep.values
 		
 		# Set x limits
@@ -61,26 +63,26 @@ plot.clade.date <- function(object, breaks="FD", ...) {
 		if(!is.null(object$PDFfit.param)) {
 						
 			if(object$PDFfit.model=="lognormal") {
-				curve(dlnorm(x-max(ages[,1]), meanlog=object$PDFfit.param["meanlog"], sdlog=object$PDFfit.param["sdlog"]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+				curve(dlnorm(x-offset, meanlog=object$PDFfit.param["meanlog"], sdlog=object$PDFfit.param["sdlog"]), n=301, from=offset, to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				mtext("Log-normal density", col="#CC6600", line=1)
 			}
 
 			if(object$PDFfit.model=="gamma") {
-				curve(dgamma(x-max(ages[,1]), shape=object$PDFfit.param["shape"], rate=object$PDFfit.param["rate"]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+				curve(dgamma(x-offset, shape=object$PDFfit.param["shape"], rate=object$PDFfit.param["rate"]), n=301, from=offset, to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				mtext("Gamma density", col="#CC6600", line=1)
 			}
 
 			if(object$PDFfit.model=="exponential") {
-				curve(dexp(x-max(ages[,1]), rate=object$PDFfit.param["rate"]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+				curve(dexp(x-offset, rate=object$PDFfit.param["rate"]), n=301, from=offset, to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				mtext("Exponential density", col="#CC6600", line=1)
 			}
 			if(object$PDFfit.model=="skewnormal") {
-				curve(sn::dsn(x, xi=object$PDFfit.param["xi"], omega=object$PDFfit.param["omega"], alpha=object$PDFfit.param["alpha"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+				curve(sn::dsn(x, xi=object$PDFfit.param["xi"], omega=object$PDFfit.param["omega"], alpha=object$PDFfit.param["alpha"]), n=301, from=offset, to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				mtext("Skew-normal density", col="#CC6600", line=1)
 			}
 		
 			if(object$PDFfit.model=="skewstudent") {
-			curve(sn::dst(x, xi=object$PDFfit.param["xi"], omega=object$PDFfit.param["omega"], alpha=object$PDFfit.param["alpha"], nu=object$PDFfit.param["nu"]), n=301, from=XX[1], to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+			curve(sn::dst(x, xi=object$PDFfit.param["xi"], omega=object$PDFfit.param["omega"], alpha=object$PDFfit.param["alpha"], nu=object$PDFfit.param["nu"]), n=301, from=offset, to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 			mtext("Skew-Student density", col="#CC6600", line=1)
 			}
 		}
