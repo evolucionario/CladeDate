@@ -24,11 +24,11 @@ This function plots empirical calibration densities from a \code{clade.date} obj
 }
 \examples{
 
-## Matrix of fossil ages including maximum and minimum bounds for each
-Fages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
+## Matrix of fossil ages including maximum and minimum bounds for each fossil.
+Fossil.ages <- rbind(c(50, 56), c(38, 45), c(30, 35), c(14, 14), c(3.5, 6))
 
 ## Clade.date analysis
-X <- clade.date(Fages)
+X <- clade.date(Fossil.ages)
 
 ## Plot
 plot(X)
@@ -40,5 +40,5 @@ Claramunt, S. (2022) CladeDate: calibration information generator for divergence
 \link{clade.date} for generating empirical calibration densities.
 }
 \author{
-Santiago Claramunt, \email{s.claramunt@utoronto.ca}
+Santiago Claramunt, \email{sclaramu@uno}
 }
