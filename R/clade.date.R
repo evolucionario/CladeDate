@@ -172,7 +172,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 			
 			# xi, omega, alpha, and nu correspond to location, scale, shape, and df used by MCMCtree
 
-			RES$PDFfit.logLik <- logLik(PDFfit) 
+			RES$PDFfit.logLik <- PDFfit@logL 
             
 			RES$PDFfit.AIC <- AIC(PDFfit)       
 
@@ -184,7 +184,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 				
 			RES$PDFfit <- PDFfit
  
-			RES$PDFfit.logLik <- logLik(PDFfit) 
+			RES$PDFfit.logLik <- PDFfit@logL 
             
 			RES$PDFfit.AIC <- AIC(PDFfit)       
 
