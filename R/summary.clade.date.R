@@ -36,7 +36,7 @@
 #'   X <- clade.date(Fages, method="RobertsSolow", plot=TRUE, PDFfitting="lognormal")
 #'   summary(X)
 #'
-#' @author Santiago Claramunt, \email{s.claramunt@@utoronto.ca}
+#' @author Santiago Claramunt, \email{sclaramu@@uno.edu}
 
 #'
 #'
