@@ -98,7 +98,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 												
 		KStest <- ks.test(Mages, 'punif', min=max(c(0,Min)), max=Max)
 						
-		if(KStest$p.value < 0.05 && method=="StraussSadler") { warning("The data may not be uniformly distributed (Kolmogorov-Smirnov P = ", signif(KStest$p.value, digits=2), ")", call.=FALSE) }
+		if(KStest$p.value < 0.05 && method=="StraussSadler") { warning("The data may not be distributed uniformly (Kolmogorov-Smirnov P = ", signif(KStest$p.value, digits=2), ")", call.=FALSE) }
 		
 		RES$KStest <- KStest
 			}
