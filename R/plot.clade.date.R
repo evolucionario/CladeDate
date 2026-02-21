@@ -61,17 +61,17 @@ plot.clade.date <- function(object, breaks="FD", ...) {
 		if(!is.null(object$PDFfit.param)) {
 						
 			if(object$PDFfit.model=="lognormal") {
-				curve(dlnorm(x-max(ages[,1]), meanlog=object$PDFfit$param[1], sdlog=object$PDFfit$param[2]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+				curve(dlnorm(x-max(ages[,1]), meanlog=object$PDFfit.param["meanlog"], sdlog=object$PDFfit.param["sdlog"]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				mtext("Log-normal density", col="#CC6600", line=1)
 			}
 
 			if(object$PDFfit.model=="gamma") {
-				curve(dgamma(x-max(ages[,1]), shape=object$PDFfit$param[1], rate=object$PDFfit$param[2]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+				curve(dgamma(x-max(ages[,1]), shape=object$PDFfit.param["shape"], rate=object$PDFfit.param["rate"]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				mtext("Gamma density", col="#CC6600", line=1)
 			}
 
 			if(object$PDFfit.model=="exponential") {
-				curve(dexp(x-max(ages[,1]), rate=object$PDFfit$param[1]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
+				curve(dexp(x-max(ages[,1]), rate=object$PDFfit.param["rate"]), n=301, from=max(ages[,1]), to=XX[2], col="#CC6600", lwd=3, add=TRUE, xpd=TRUE)
 				mtext("Exponential density", col="#CC6600", line=1)
 			}
 			if(object$PDFfit.model=="skewnormal") {
