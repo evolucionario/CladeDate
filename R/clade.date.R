@@ -128,7 +128,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 			
 			RES$PDFfit.model <- PDFfitting
 			
-			RES$PDFfit <- switch(best.model, PDFfit.lognormal, PDFfit.gamma, PDFfit.exponential)
+			RES$PDFfit.param <- switch(best.model, PDFfit.lognormal, PDFfit.gamma, PDFfit.exponential)[[1]]
 
 			RES$PDFfit.AIC <- min(AICs)
 
@@ -174,7 +174,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 
 			RES$PDFfit.model <- PDFfitting
 				
-			RES$PDFfit <- PDFfit
+			RES$PDFfit.param <- PDFfit[[1]]
  
 			RES$PDFfit.logLik <- logLik(PDFfit) 
             
