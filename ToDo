@@ -29,6 +29,8 @@ Check compatibility of calibrations. Look for function plot.prior in my files.
 
 ### DONE ###
 
+clade.date and summary now report logLik and AIC of the PDF models (Feb 2026).
+
 Switched to the 'sn' package for fitting skew-normal and skew-Student distributions, returning parameters that can be used in MCMCtree.
 
 Fixed the "quartz" bug. Deleted the call to quartz so the ploting function works in PC as well.
