@@ -88,10 +88,10 @@ plot.clade.date <- function(object, breaks="FD", ...) {
 				
 	mean.ages <- rowMeans(ages)
 
-	points(mean.ages, rep(0, length(mean.ages)), pch=17, xpd=TRUE, cex=1.2)
+	points(mean.ages, rep(0, length(mean.ages)), pch=18, xpd=TRUE, cex=1.2)
 
-	points(quantile(rA, prob=c(0.5,0.95)), c(0,0), pch=c(17,18), col="#0078B3", xpd=TRUE, cex=1.2)
+	points(quantile(rA, prob=c(0.5,0.95)), c(0,0), pch=c(24,24), col="#0078B3", bg=c("#0078B3", "#0078B300"), xpd=TRUE, cex=1.2)
 		
-	legend("topright", legend=c("fossil ages","MC distribution", "median","95% quantile"), pch=c(17,22, 17,18), col=c("black","#4DCCFF","#0078B3","#0078B3"), pt.bg=c("black",rgb(.25,.7,.9,0.5)), bty="n") # inset=c(0, -0.1), xpd=TRUE
+	legend("topright", legend=c("fossil ages","MC distribution", "median","95% quantile"), pch=c(18,22, 24,24), col=c("black","#4DCCFF","#0078B3","#0078B3"), pt.bg=c("black", "#40B3E680", "#0078B3", "#0078B300"), bty="n") # inset=c(0, -0.1), xpd=TRUE
 	
 }	
