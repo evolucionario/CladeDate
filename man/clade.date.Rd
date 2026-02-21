@@ -50,7 +50,7 @@ a list with the following elements:
 }
 }
 \description{
-This function uses the fossil record of a clade to generate an empirical probability density function that can be used as a calibration density or calibration prior in Bayesian divergence time estimation. Relevant quantiles such as the median or the 95\% quantile can also obtained to be used in analyses based on fixed ages or bounds.
+This function uses the fossil record of a clade to generate an empirical probability density that can be used as a calibration density or calibration prior in Bayesian divergence time estimation. Relevant quantiles such as the median or the 95\% quantile can also obtained to be used in analyses based on fixed ages or bounds.
 }
 \details{
 This function generates an empirical distribution representing the uncertainty around the estimated age of a clade of organisms based on a collection of fossil ages. The distribution is generated using a Monte Carlo algorithm and methods for estimating the upper bounds of truncated distributions (see \link{pdate}). The algorithm incorporates fossil age uncertainty (if present) by sampling ages from the time interval were the fossil was found. A Kolmogorov-Smirnov test can be requested to test the null hypothesis that the distribution of fossil ages is uniform (using function \link{ks.test}); the bounds under the null are estimated using the StraussSadler method and, if fossil ages are represend by intervals, a random sample of ages from the intervals is used for the test.
@@ -58,7 +58,7 @@ This function generates an empirical distribution representing the uncertainty a
 \examples{
 
 ## Matrix of fossil ages including maximum and minimum bounds for each
-Fossil.ages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
+Fossil.ages <- rbind(c(50, 56), c(38, 45), c(30, 35), c(14, 14), c(3.5, 6))
 
 ## Basic execution
   clade.date(Fossil.ages)
@@ -74,5 +74,5 @@ Claramunt, S. (2022) CladeDate: calibration information generator for divergence
 \link{pdate} for point estimates, quantile function, and random generator when fossil ages are known exactly.
 }
 \author{
-Santiago Claramunt, \email{s.claramu@uno.edu}
+Santiago Claramunt, \email{sclaramu@uno.edu}
 }
