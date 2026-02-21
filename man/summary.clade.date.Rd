@@ -30,7 +30,7 @@ Parameters of the probability density function fit, if present, are reported the
 \examples{
 
 ## Matrix of fossil ages including maximum and minimum bounds for each
-Fages <- cbind(c(50, 38, 30, 14, 3.5), c(56, 45, 35, 14, 6))
+Fages <- rbind(c(50, 56), c(38, 45), c(30, 35), c(14, 14), c(3.5, 6))
 
 ## Basic execution
   clade.date(Fages)
