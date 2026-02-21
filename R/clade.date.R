@@ -140,17 +140,13 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 
 			PDFfit <- sn::selm(rA ~ 1, family="SN")
 			
-			#RES$PDFfit.logLik <- sn::logLik(PDFfit)
-
-			#RES$PDFfit.AIC <- sn::AIC(PDFfit)
-
 			param <- sn::extractSECdistr(PDFfit)
 			
 			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"])
 
 			# xi, omega, alpha, and nu correspond to location, scale and shape used by MCMCtree
 			
-			RES$PDFfit.logLik <- logLik(PDFfit) 
+			RES$PDFfit.logLik <- PDFfit@logL
             
 			RES$PDFfit.AIC <- AIC(PDFfit)       
 
@@ -161,10 +157,6 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 			# Use sn::selm (fit of linear model with skew error) with an intercept-only to estimate the error term only
 
 			PDFfit <- sn::selm(rA ~ 1, family="ST")
-			
-			#RES$PDFfit.logLik <- sn::logLik(PDFfit)
-
-			#RES$PDFfit.AIC <- sn::AIC(PDFfit)
 
 			param <- sn::extractSECdistr(PDFfit)
 			
@@ -184,7 +176,7 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 				
 			RES$PDFfit <- PDFfit
  
-			RES$PDFfit.logLik <- PDFfit@logL 
+			RES$PDFfit.logLik <- logLik(PDFfit) 
             
 			RES$PDFfit.AIC <- AIC(PDFfit)       
 
