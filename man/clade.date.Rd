@@ -74,5 +74,5 @@ Claramunt, S. (2022) CladeDate: calibration information generator for divergence
 \link{pdate} for point estimates, quantile function, and random generator when fossil ages are known exactly.
 }
 \author{
-Santiago Claramunt, \email{s.claramunt@utoronto.ca}
+Santiago Claramunt, \email{s.claramu@uno.edu}
 }
