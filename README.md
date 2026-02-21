@@ -1,6 +1,6 @@
 ## CladeDate: Empirical calibration density generator for divergence time estimation
 
-### Version: 1.2
+### Version: 1.3
 
 Santiago Claramunt
 
