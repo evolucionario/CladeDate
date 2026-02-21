@@ -130,6 +130,8 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 			
 			RES$PDFfit <- switch(best.model, PDFfit.lognormal, PDFfit.gamma, PDFfit.exponential)
 
+			RES$PDFfit.AIC <- min(AICs)
+
 			} else if(PDFfitting=="skewnormal") {		
 		
 			RES$PDFfit.model <- "skewnormal"
@@ -148,6 +150,10 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 
 			# xi, omega, alpha, and nu correspond to location, scale and shape used by MCMCtree
 			
+			RES$PDFfit.logLik <- logLik(PDFfit) 
+            
+			RES$PDFfit.AIC <- AIC(PDFfit)       
+
 			} else if(PDFfitting=="skewstudent") {		
 		
 			RES$PDFfit.model <- "skewstudent"
@@ -165,7 +171,11 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 			RES$PDFfit.param <- c(param@dp["xi"], param@dp["omega"], param@dp["alpha"], param@dp["nu"])
 			
 			# xi, omega, alpha, and nu correspond to location, scale, shape, and df used by MCMCtree
-			
+
+			RES$PDFfit.logLik <- logLik(PDFfit) 
+            
+			RES$PDFfit.AIC <- AIC(PDFfit)       
+
 			} else {		
 			
 			PDFfit <- MASS::fitdistr(x=rA-max(ages[,1]), densfun=PDFfitting)
@@ -173,6 +183,11 @@ clade.date <- function(ages, p=c(0, 0.5, 0.95), n=1000, method="StraussSadler", 
 			RES$PDFfit.model <- PDFfitting
 				
 			RES$PDFfit <- PDFfit
+ 
+			RES$PDFfit.logLik <- logLik(PDFfit) 
+            
+			RES$PDFfit.AIC <- AIC(PDFfit)       
+
 			}
 						
 		}
