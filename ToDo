@@ -1,18 +1,14 @@
+### To Do ###
 
-### plot.clade.date ###
-In plot.clade.date, handle the presence or absence of replicate values. If repvalues are not present in the clade.date object, plot the probability curve anyway (if a fit present), and return a message saying that if the empirical distribution is wanted, repvalues has to be switched to TRUE in clade.date
+# In plot.clade.date, handle the presence or absence of replicate values. If repvalues are not present in the clade.date object, plot the probability curve anyway (if a fit present), and return a message saying that if the empirical distribution is wanted, repvalues has to be switched to TRUE in clade.date
 Similarly with fit.distr.
 
 
 ### Bugs ###
 
-# When using the plotting option in clade.date:
-"Error in hist.default(rA, breaks = breaks, freq = FALSE, xlim = XX, col = rgb(0.25,  : 
-  'x' must be numeric"
-# When fitting a skewstudent distribution in sn: "Error in integrate(fun.d, -Inf, alpha * zt[i], nu1 = nu + 1) : 
-  the integral is probably divergent" Maybe switch to maxumum penalized likelihood estimation in seml, although that seems to work better for small sample size. Or play with sample size (pseudoreplicates): fewer samples seem to work.
-# Fix bug preventing the plot of "skewnormal" and "skewstudent" funcitons.
- 
+# When fitting a skew-Student distribution in sn an error may occur: "Error in integrate(fun.d, -Inf, alpha * zt[i], nu1 = nu + 1) : 
+  the integral is probably divergent." Reducing the number or repliciates seems to solve the issue. Changing optimiaztion functions or using maxumum penalized likelihood estimation in seml does not have much on an effect.
+
 
 ### Add ancillary functions: ###
 
@@ -28,6 +24,8 @@ Check compatibility of calibrations. Look for function plot.prior in my files.
 
 
 ### DONE ###
+
+Fixed bug preventing the plot of "skewnormal" and "skewstudent" funcitons (Feb 2026).
 
 clade.date and summary now report logLik and AIC of the PDF models (Feb 2026).
 
